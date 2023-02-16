@@ -1,0 +1,8 @@
+C:\Users\user\Desktop\taner-excel\excel-deskapp\bin\Release\net6.0-windows\publish\excel-deskapp.exe
+C:\Users\user\Desktop\taner-excel\excel-deskapp\bin\Release\net6.0-windows\publish\excel-deskapp.dll
+C:\Users\user\Desktop\taner-excel\excel-deskapp\bin\Release\net6.0-windows\publish\excel-deskapp.deps.json
+C:\Users\user\Desktop\taner-excel\excel-deskapp\bin\Release\net6.0-windows\publish\excel-deskapp.runtimeconfig.json
+C:\Users\user\Desktop\taner-excel\excel-deskapp\bin\Release\net6.0-windows\publish\excel-deskapp.dll.config
+C:\Users\user\Desktop\taner-excel\excel-deskapp\bin\Release\net6.0-windows\publish\excel-deskapp.pdb
+C:\Users\user\Desktop\taner-excel\excel-deskapp\bin\Release\net6.0-windows\publish\ExcelDataReader.dll
+C:\Users\user\Desktop\taner-excel\excel-deskapp\bin\Release\net6.0-windows\publish\ExcelDataReader.DataSet.dll

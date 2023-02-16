@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "Q6Bqc5/OAyDaouQPNpJJL7AS9Svuf3z/QMtoMaL9NaJNwIQ4Wu75wSh1gY8NcgR4xN6SNrlJlW/YHNo81ZoCkA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\user\\Desktop\\taner-excel\\excel-deskapp\\excel-deskapp.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\user\\.nuget\\packages\\exceldatareader\\3.6.0\\exceldatareader.3.6.0.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\exceldatareader.dataset\\3.6.0\\exceldatareader.dataset.3.6.0.nupkg.sha512"
+  ],
+  "logs": []
+}
