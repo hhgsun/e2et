@@ -11,6 +11,7 @@ namespace excel_deskapp
         public static string HeaderTextPosition = "Position";
         public static string HeaderTextDescription = "Description";
         public static string HeaderTextDefaultValue = "Default Value";
+        public static string HeaderTextSourcePosition = "Source Position";
         public static string MessageInvalid = "Invalid";
         public static string MessageUploadFile = "Upload the excel file first";
         public static string MessageSchemaNameField = "Please enter schema name";

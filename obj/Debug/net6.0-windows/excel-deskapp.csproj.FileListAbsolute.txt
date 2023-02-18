@@ -26,7 +26,6 @@ C:\Users\user\Desktop\taner-excel\excel-deskapp\bin\Debug\net6.0-windows\excel-d
 C:\Users\user\Desktop\taner-excel\excel-deskapp\bin\Debug\net6.0-windows\ExcelDataReader.dll
 C:\Users\user\Desktop\taner-excel\excel-deskapp\bin\Debug\net6.0-windows\ExcelDataReader.DataSet.dll
 C:\Users\user\Desktop\taner-excel\excel-deskapp\obj\Debug\net6.0-windows\excel-deskapp.csproj.AssemblyReference.cache
-C:\Users\user\Desktop\taner-excel\excel-deskapp\obj\Debug\net6.0-windows\excel_deskapp.Form1.resources
 C:\Users\user\Desktop\taner-excel\excel-deskapp\obj\Debug\net6.0-windows\excel-deskapp.csproj.GenerateResource.cache
 C:\Users\user\Desktop\taner-excel\excel-deskapp\obj\Debug\net6.0-windows\excel-deskapp.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\user\Desktop\taner-excel\excel-deskapp\obj\Debug\net6.0-windows\excel-deskapp.AssemblyInfoInputs.cache
@@ -41,3 +40,4 @@ C:\Users\user\Desktop\taner-excel\excel-deskapp\obj\Debug\net6.0-windows\ref\exc
 C:\Users\user\Desktop\taner-excel\excel-deskapp\bin\Debug\net6.0-windows\excel-deskapp.dll.config
 C:\Users\user\Desktop\taner-excel\excel-deskapp\obj\Debug\net6.0-windows\excel_deskapp.FormSchemaEdit.resources
 C:\Users\user\Desktop\taner-excel\excel-deskapp\obj\Debug\net6.0-windows\excel_deskapp.FormSchemas.resources
+C:\Users\user\Desktop\taner-excel\excel-deskapp\obj\Debug\net6.0-windows\excel_deskapp.FormGenerate.resources

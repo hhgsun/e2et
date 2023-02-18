@@ -179,12 +179,11 @@ namespace excel_deskapp
                 return;
             }
 
-            Form1 form1 = new Form1();
+            FormGenerate form1 = new FormGenerate();
             form1.SchemaTable = this.dataGridSchema;
             form1.SchemaInputs = this.dataGridViewInputs;
             form1.SchemaLoopInputs = this.dataGridMultiArea;
             form1.SchemaIsHorizontal = checkBoxIsHorizontal.Checked;
-            form1.SchemaIsAddRowBetween = checkBoxIsAddRowBetween.Checked;
             form1.SchemaLineStartCount = (int)txtBoxLineStartCount.Value;
 
             string uid = Guid.NewGuid().ToString();
@@ -195,7 +194,6 @@ namespace excel_deskapp
             saveFileGridView(folder, ConfigurationManager.AppSettings.Get("FileNameSchemaSpecial") ?? "single", this.dataGridViewInputs);
             saveFileGridView(folder, ConfigurationManager.AppSettings.Get("FileNameSchemaMultiple") ?? "multiple", this.dataGridMultiArea);
             saveFileSettingOptions(folder, ConfigurationManager.AppSettings.Get("FileNameSchemaMultipleHorizontal") ?? "_horizontal", checkBoxIsHorizontal.Checked.ToString());
-            saveFileSettingOptions(folder, ConfigurationManager.AppSettings.Get("FileNameSchemaMultipleIsAddRowBetween") ?? "_isrowbetween", checkBoxIsAddRowBetween.Checked.ToString());
             saveFileSettingOptions(folder, ConfigurationManager.AppSettings.Get("FileNameSchemaMultipleStartCount") ?? "_startcount", txtBoxLineStartCount.Value.ToString());
             saveFileSettingOptions(folder, ConfigurationManager.AppSettings.Get("FileNameOwner") ?? "owner", textBoxSchemaName.Text);
             saveFileExcel(folder, ConfigurationManager.AppSettings.Get("FileNameExcel") ?? "excel", openFileName);
@@ -270,7 +268,6 @@ namespace excel_deskapp
             string fileSpecial = @$"{folderName}\{ConfigurationManager.AppSettings.Get("FileNameSchemaSpecial") ?? "single"}.txt";
             string fileMultiple = @$"{folderName}\{ConfigurationManager.AppSettings.Get("FileNameSchemaMultiple") ?? "multiple"}.txt";
             string fileHorizontal = @$"{folderName}\{ConfigurationManager.AppSettings.Get("FileNameSchemaMultipleHorizontal") ?? "_horizontal"}.txt";
-            string fileIsAddRowBetween = @$"{folderName}\{ConfigurationManager.AppSettings.Get("FileNameSchemaMultipleIsAddRowBetween") ?? "_isrowbetween"}.txt";
             string fileStartCount = @$"{folderName}\{ConfigurationManager.AppSettings.Get("FileNameSchemaMultipleStartCount") ?? "_startcount"}.txt";
             string fileOwner = @$"{folderName}\{ConfigurationManager.AppSettings.Get("FileNameOwner") ?? "owner"}.txt";
             string fileExcel = @$"{folderName}\{ConfigurationManager.AppSettings.Get("FileNameExcel") ?? "excel"}.xlsx";
@@ -309,9 +306,6 @@ namespace excel_deskapp
 
             string horizontal = File.ReadAllText(fileHorizontal);
             checkBoxIsHorizontal.Checked = horizontal.Contains("True") ? true : false;
-
-            string addRowBetween = File.ReadAllText(fileIsAddRowBetween);
-            checkBoxIsAddRowBetween.Checked = addRowBetween.Contains("True") ? true : false;
 
             string startCount = File.ReadAllText(fileStartCount);
             txtBoxLineStartCount.Text = startCount;

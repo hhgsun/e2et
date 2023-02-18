@@ -43,7 +43,6 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.checkBoxIsAddRowBetween = new System.Windows.Forms.CheckBox();
             this.txtBoxLineStartCount = new System.Windows.Forms.NumericUpDown();
             this.checkBoxIsHorizontal = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -227,7 +226,6 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.checkBoxIsAddRowBetween);
             this.panel1.Controls.Add(this.txtBoxLineStartCount);
             this.panel1.Controls.Add(this.checkBoxIsHorizontal);
             this.panel1.Controls.Add(this.label1);
@@ -236,17 +234,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(331, 30);
             this.panel1.TabIndex = 13;
-            // 
-            // checkBoxIsAddRowBetween
-            // 
-            this.checkBoxIsAddRowBetween.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.checkBoxIsAddRowBetween.AutoSize = true;
-            this.checkBoxIsAddRowBetween.Location = new System.Drawing.Point(129, 5);
-            this.checkBoxIsAddRowBetween.Name = "checkBoxIsAddRowBetween";
-            this.checkBoxIsAddRowBetween.Size = new System.Drawing.Size(113, 19);
-            this.checkBoxIsAddRowBetween.TabIndex = 13;
-            this.checkBoxIsAddRowBetween.Text = "Satır arasına ekle";
-            this.checkBoxIsAddRowBetween.UseVisualStyleBackColor = true;
             // 
             // txtBoxLineStartCount
             // 
@@ -328,7 +315,6 @@
         private NumericUpDown txtBoxLineStartCount;
         private CheckBox checkBoxIsHorizontal;
         private Label label1;
-        private CheckBox checkBoxIsAddRowBetween;
         private Label label2;
         private TextBox textBoxSchemaName;
     }

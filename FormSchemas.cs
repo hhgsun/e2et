@@ -56,6 +56,9 @@ namespace excel_deskapp
                 MessageBox.Show(Constans.MessageSchemaChoose);
                 return;
             }
+            FormGenerate formGenerate = new FormGenerate();
+            formGenerate.InitialSchemaFileName = (comboBoxSchemas.SelectedItem as ComboboxItem)?.Value;
+            formGenerate.Show();
         }
 
         private void FormSchemas_Load(object sender, EventArgs e)

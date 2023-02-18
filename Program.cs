@@ -13,7 +13,7 @@ namespace excel_deskapp
             ApplicationConfiguration.Initialize();
             Application.Run(new FormSchemas());
             //Application.Run(new FormSchemaEdit());
-            //Application.Run(new Form1());
+            //Application.Run(new FormGenerate());
         }
     }
 }
