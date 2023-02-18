@@ -1,4 +1,4 @@
-﻿namespace excel_deskapp
+﻿namespace excel2excel_template
 {
     partial class FormGenerate
     {
@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormGenerate));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridSourceGenerate = new System.Windows.Forms.DataGridView();
@@ -38,11 +39,11 @@
             this.dataGridViewSingle = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridViewMultiple = new System.Windows.Forms.DataGridView();
+            this.checkBoxAddBetweenLines = new System.Windows.Forms.CheckBox();
             this.numericUpDownFinishLineCount = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
             this.buttonPreview = new System.Windows.Forms.Button();
             this.dataGridSchema = new System.Windows.Forms.DataGridView();
-            this.checkBoxAddBetweenLines = new System.Windows.Forms.CheckBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridSourceGenerate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -69,26 +70,27 @@
             this.toolStripMenuItem1});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1414, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1314, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(65, 20);
-            this.toolStripMenuItem1.Text = "DosyaAc";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(113, 20);
+            this.toolStripMenuItem1.Text = "Kaynak Dosya Seç";
             this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
             // dataGridSourceGenerate
             // 
+            this.dataGridSourceGenerate.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridSourceGenerate.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridSourceGenerate.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridSourceGenerate.Location = new System.Drawing.Point(0, 0);
             this.dataGridSourceGenerate.Name = "dataGridSourceGenerate";
             this.dataGridSourceGenerate.RowTemplate.Height = 25;
             this.dataGridSourceGenerate.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dataGridSourceGenerate.Size = new System.Drawing.Size(923, 609);
+            this.dataGridSourceGenerate.Size = new System.Drawing.Size(857, 609);
             this.dataGridSourceGenerate.TabIndex = 1;
             this.dataGridSourceGenerate.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridGenerate_CellClick);
             // 
@@ -105,8 +107,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(1414, 609);
-            this.splitContainer1.SplitterDistance = 923;
+            this.splitContainer1.Size = new System.Drawing.Size(1314, 609);
+            this.splitContainer1.SplitterDistance = 857;
             this.splitContainer1.TabIndex = 2;
             // 
             // splitContainer2
@@ -122,12 +124,12 @@
             // 
             // splitContainer2.Panel2
             // 
-            this.splitContainer2.Panel2.Controls.Add(this.checkBoxAddBetweenLines);
             this.splitContainer2.Panel2.Controls.Add(this.numericUpDownFinishLineCount);
+            this.splitContainer2.Panel2.Controls.Add(this.checkBoxAddBetweenLines);
             this.splitContainer2.Panel2.Controls.Add(this.label3);
             this.splitContainer2.Panel2.Controls.Add(this.buttonPreview);
             this.splitContainer2.Panel2.Controls.Add(this.dataGridSchema);
-            this.splitContainer2.Size = new System.Drawing.Size(487, 609);
+            this.splitContainer2.Size = new System.Drawing.Size(453, 609);
             this.splitContainer2.SplitterDistance = 255;
             this.splitContainer2.TabIndex = 6;
             // 
@@ -147,7 +149,7 @@
             // 
             this.splitContainer3.Panel2.Controls.Add(this.label1);
             this.splitContainer3.Panel2.Controls.Add(this.dataGridViewMultiple);
-            this.splitContainer3.Size = new System.Drawing.Size(487, 255);
+            this.splitContainer3.Size = new System.Drawing.Size(453, 255);
             this.splitContainer3.SplitterDistance = 127;
             this.splitContainer3.TabIndex = 6;
             // 
@@ -166,11 +168,12 @@
             this.dataGridViewSingle.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridViewSingle.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridViewSingle.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewSingle.Location = new System.Drawing.Point(3, 22);
+            this.dataGridViewSingle.Location = new System.Drawing.Point(0, 22);
             this.dataGridViewSingle.Name = "dataGridViewSingle";
             this.dataGridViewSingle.RowTemplate.Height = 25;
-            this.dataGridViewSingle.Size = new System.Drawing.Size(481, 102);
+            this.dataGridViewSingle.Size = new System.Drawing.Size(453, 102);
             this.dataGridViewSingle.TabIndex = 1;
             this.dataGridViewSingle.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSingle_CellClick);
             // 
@@ -188,18 +191,29 @@
             this.dataGridViewMultiple.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridViewMultiple.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridViewMultiple.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewMultiple.Location = new System.Drawing.Point(3, 21);
+            this.dataGridViewMultiple.Location = new System.Drawing.Point(0, 21);
             this.dataGridViewMultiple.Name = "dataGridViewMultiple";
             this.dataGridViewMultiple.RowTemplate.Height = 25;
-            this.dataGridViewMultiple.Size = new System.Drawing.Size(481, 100);
+            this.dataGridViewMultiple.Size = new System.Drawing.Size(453, 100);
             this.dataGridViewMultiple.TabIndex = 2;
             this.dataGridViewMultiple.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewMultiple_CellClick);
+            // 
+            // checkBoxAddBetweenLines
+            // 
+            this.checkBoxAddBetweenLines.AutoSize = true;
+            this.checkBoxAddBetweenLines.Location = new System.Drawing.Point(112, 5);
+            this.checkBoxAddBetweenLines.Name = "checkBoxAddBetweenLines";
+            this.checkBoxAddBetweenLines.Size = new System.Drawing.Size(80, 19);
+            this.checkBoxAddBetweenLines.TabIndex = 6;
+            this.checkBoxAddBetweenLines.Text = "Araya Ekle";
+            this.checkBoxAddBetweenLines.UseVisualStyleBackColor = true;
             // 
             // numericUpDownFinishLineCount
             // 
             this.numericUpDownFinishLineCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.numericUpDownFinishLineCount.Location = new System.Drawing.Point(439, 3);
+            this.numericUpDownFinishLineCount.Location = new System.Drawing.Point(405, 3);
             this.numericUpDownFinishLineCount.Name = "numericUpDownFinishLineCount";
             this.numericUpDownFinishLineCount.Size = new System.Drawing.Size(45, 23);
             this.numericUpDownFinishLineCount.TabIndex = 4;
@@ -213,19 +227,19 @@
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(319, 7);
+            this.label3.Location = new System.Drawing.Point(201, 6);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(121, 15);
+            this.label3.Size = new System.Drawing.Size(207, 15);
             this.label3.TabIndex = 5;
-            this.label3.Text = "Aktarılacak satır sayısı";
+            this.label3.Text = "Kaynak dosyadan kaç satır aktarılacak:";
             // 
             // buttonPreview
             // 
             this.buttonPreview.Location = new System.Drawing.Point(0, 3);
             this.buttonPreview.Name = "buttonPreview";
-            this.buttonPreview.Size = new System.Drawing.Size(75, 23);
+            this.buttonPreview.Size = new System.Drawing.Size(106, 23);
             this.buttonPreview.TabIndex = 3;
-            this.buttonPreview.Text = "Oluştur";
+            this.buttonPreview.Text = "Şablonda Göster";
             this.buttonPreview.UseVisualStyleBackColor = true;
             this.buttonPreview.Click += new System.EventHandler(this.buttonPreview_Click);
             // 
@@ -234,30 +248,23 @@
             this.dataGridSchema.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridSchema.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridSchema.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridSchema.Location = new System.Drawing.Point(0, 27);
             this.dataGridSchema.Name = "dataGridSchema";
+            this.dataGridSchema.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dataGridSchema.RowTemplate.Height = 25;
-            this.dataGridSchema.Size = new System.Drawing.Size(487, 320);
+            this.dataGridSchema.Size = new System.Drawing.Size(453, 320);
             this.dataGridSchema.TabIndex = 0;
-            // 
-            // checkBoxAddBetweenLines
-            // 
-            this.checkBoxAddBetweenLines.AutoSize = true;
-            this.checkBoxAddBetweenLines.Location = new System.Drawing.Point(81, 7);
-            this.checkBoxAddBetweenLines.Name = "checkBoxAddBetweenLines";
-            this.checkBoxAddBetweenLines.Size = new System.Drawing.Size(80, 19);
-            this.checkBoxAddBetweenLines.TabIndex = 6;
-            this.checkBoxAddBetweenLines.Text = "Araya Ekle";
-            this.checkBoxAddBetweenLines.UseVisualStyleBackColor = true;
             // 
             // FormGenerate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1414, 633);
+            this.ClientSize = new System.Drawing.Size(1314, 633);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FormGenerate";
             this.Text = "Generate";

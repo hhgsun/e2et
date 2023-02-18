@@ -4,15 +4,11 @@ using System.Data;
 using System.Text;
 using System.Windows.Forms;
 
-namespace excel_deskapp
+namespace excel2excel_template
 {
     public partial class FormGenerate : Form
     {
         public string? InitialSchemaFileName = null;
-
-        public DataGridView SchemaTable = new DataGridView();
-        public DataGridView SchemaInputs = new DataGridView();
-        public DataGridView SchemaLoopInputs = new DataGridView();
         public bool SchemaIsHorizontal = false;
         public int SchemaLineStartCount = 0;
         public string SchemaOwner = "";
@@ -25,6 +21,8 @@ namespace excel_deskapp
 
         private void FormGenerate_Load(object sender, EventArgs e)
         {
+            this.Text = Constans.AppName + " > Tablodan Þablona Aktar";
+
             if (string.IsNullOrEmpty(InitialSchemaFileName))
                 return;
 
@@ -85,12 +83,6 @@ namespace excel_deskapp
 
             clearGridSelectedCell(dataGridViewSingle);
             clearGridSelectedCell(dataGridViewMultiple);
-        }
-
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
 
         DataSet ds;

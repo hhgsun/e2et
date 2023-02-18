@@ -1,4 +1,4 @@
-﻿namespace excel_deskapp
+﻿namespace excel2excel_template
 {
     partial class FormSchemaEdit
     {
@@ -29,19 +29,22 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormSchemaEdit));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.sablonSecToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridSchema = new System.Windows.Forms.DataGridView();
             this.dataGridViewInputs = new System.Windows.Forms.DataGridView();
             this.dataGridMultiArea = new System.Windows.Forms.DataGridView();
             this.label3 = new System.Windows.Forms.Label();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.buttonSaveSchema = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.textBoxSchemaName = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.buttonHelpSingle = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.buttonHelpMultiple = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtBoxLineStartCount = new System.Windows.Forms.NumericUpDown();
             this.checkBoxIsHorizontal = new System.Windows.Forms.CheckBox();
@@ -67,8 +70,7 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.sablonSecToolStripMenuItem,
-            this.saveToolStripMenuItem});
+            this.sablonSecToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1000, 24);
@@ -78,21 +80,15 @@
             // sablonSecToolStripMenuItem
             // 
             this.sablonSecToolStripMenuItem.Name = "sablonSecToolStripMenuItem";
-            this.sablonSecToolStripMenuItem.Size = new System.Drawing.Size(73, 20);
-            this.sablonSecToolStripMenuItem.Text = "SablonSec";
+            this.sablonSecToolStripMenuItem.Size = new System.Drawing.Size(119, 20);
+            this.sablonSecToolStripMenuItem.Text = "Şablon Dosyası Seç";
             this.sablonSecToolStripMenuItem.Click += new System.EventHandler(this.sablonSecToolStripMenuItem_Click);
-            // 
-            // saveToolStripMenuItem
-            // 
-            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
-            this.saveToolStripMenuItem.Text = "Save";
-            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // dataGridSchema
             // 
             this.dataGridSchema.AllowUserToAddRows = false;
             this.dataGridSchema.AllowUserToDeleteRows = false;
+            this.dataGridSchema.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridSchema.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridSchema.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridSchema.EnableHeadersVisualStyles = false;
@@ -119,6 +115,7 @@
             // 
             // dataGridViewInputs
             // 
+            this.dataGridViewInputs.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridViewInputs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewInputs.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewInputs.Location = new System.Drawing.Point(3, 19);
@@ -132,6 +129,7 @@
             this.dataGridMultiArea.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridMultiArea.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridMultiArea.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridMultiArea.Location = new System.Drawing.Point(3, 19);
             this.dataGridMultiArea.Name = "dataGridMultiArea";
@@ -172,6 +170,7 @@
             // 
             // splitContainer2.Panel1
             // 
+            this.splitContainer2.Panel1.Controls.Add(this.buttonSaveSchema);
             this.splitContainer2.Panel1.Controls.Add(this.label2);
             this.splitContainer2.Panel1.Controls.Add(this.textBoxSchemaName);
             this.splitContainer2.Panel1.Controls.Add(this.groupBox1);
@@ -182,6 +181,17 @@
             this.splitContainer2.Size = new System.Drawing.Size(337, 608);
             this.splitContainer2.SplitterDistance = 304;
             this.splitContainer2.TabIndex = 11;
+            // 
+            // buttonSaveSchema
+            // 
+            this.buttonSaveSchema.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonSaveSchema.Location = new System.Drawing.Point(260, 3);
+            this.buttonSaveSchema.Name = "buttonSaveSchema";
+            this.buttonSaveSchema.Size = new System.Drawing.Size(75, 23);
+            this.buttonSaveSchema.TabIndex = 12;
+            this.buttonSaveSchema.Text = "Kaydet";
+            this.buttonSaveSchema.UseVisualStyleBackColor = true;
+            this.buttonSaveSchema.Click += new System.EventHandler(this.buttonSaveSchema_Click);
             // 
             // label2
             // 
@@ -196,7 +206,7 @@
             // 
             this.textBoxSchemaName.Location = new System.Drawing.Point(74, 3);
             this.textBoxSchemaName.Name = "textBoxSchemaName";
-            this.textBoxSchemaName.Size = new System.Drawing.Size(260, 23);
+            this.textBoxSchemaName.Size = new System.Drawing.Size(154, 23);
             this.textBoxSchemaName.TabIndex = 10;
             // 
             // groupBox1
@@ -205,6 +215,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.dataGridViewInputs);
+            this.groupBox1.Controls.Add(this.buttonHelpSingle);
             this.groupBox1.Location = new System.Drawing.Point(0, 28);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(337, 276);
@@ -212,8 +223,25 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Özel Alanlar";
             // 
+            // buttonHelpSingle
+            // 
+            this.buttonHelpSingle.AccessibleDescription = "bilgi";
+            this.buttonHelpSingle.AccessibleRole = System.Windows.Forms.AccessibleRole.ToolTip;
+            this.buttonHelpSingle.Cursor = System.Windows.Forms.Cursors.Help;
+            this.buttonHelpSingle.FlatAppearance.BorderSize = 0;
+            this.buttonHelpSingle.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.buttonHelpSingle.Location = new System.Drawing.Point(74, -1);
+            this.buttonHelpSingle.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonHelpSingle.Name = "buttonHelpSingle";
+            this.buttonHelpSingle.Size = new System.Drawing.Size(24, 20);
+            this.buttonHelpSingle.TabIndex = 10;
+            this.buttonHelpSingle.Text = "?";
+            this.buttonHelpSingle.UseVisualStyleBackColor = true;
+            this.buttonHelpSingle.Click += new System.EventHandler(this.buttonHelpSingle_Click);
+            // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.buttonHelpMultiple);
             this.groupBox2.Controls.Add(this.panel1);
             this.groupBox2.Controls.Add(this.dataGridMultiArea);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -223,6 +251,22 @@
             this.groupBox2.TabIndex = 10;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Tekrarlı Alanlar";
+            // 
+            // buttonHelpMultiple
+            // 
+            this.buttonHelpMultiple.AccessibleDescription = "bilgi";
+            this.buttonHelpMultiple.AccessibleRole = System.Windows.Forms.AccessibleRole.ToolTip;
+            this.buttonHelpMultiple.Cursor = System.Windows.Forms.Cursors.Help;
+            this.buttonHelpMultiple.FlatAppearance.BorderSize = 0;
+            this.buttonHelpMultiple.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.buttonHelpMultiple.Location = new System.Drawing.Point(90, -1);
+            this.buttonHelpMultiple.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonHelpMultiple.Name = "buttonHelpMultiple";
+            this.buttonHelpMultiple.Size = new System.Drawing.Size(24, 20);
+            this.buttonHelpMultiple.TabIndex = 11;
+            this.buttonHelpMultiple.Text = "?";
+            this.buttonHelpMultiple.UseVisualStyleBackColor = true;
+            this.buttonHelpMultiple.Click += new System.EventHandler(this.buttonHelpMultiple_Click);
             // 
             // panel1
             // 
@@ -256,11 +300,11 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(45, 6);
+            this.label1.Location = new System.Drawing.Point(40, 6);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(91, 15);
+            this.label1.Size = new System.Drawing.Size(144, 15);
             this.label1.TabIndex = 12;
-            this.label1.Text = "satır sonra başla";
+            this.label1.Text = "satır sonra artırmaya başla";
             // 
             // FormSchemaEdit
             // 
@@ -270,9 +314,10 @@
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.label3);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FormSchemaEdit";
-            this.Text = "FormSchemaEdit";
+            this.Text = "SchemaEdit";
             this.Load += new System.EventHandler(this.FormSchemaEdit_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -306,7 +351,6 @@
         private Label label3;
         private DataGridView dataGridMultiArea;
         private DataGridView dataGridViewInputs;
-        private ToolStripMenuItem saveToolStripMenuItem;
         private SplitContainer splitContainer1;
         private SplitContainer splitContainer2;
         private GroupBox groupBox1;
@@ -317,5 +361,8 @@
         private Label label1;
         private Label label2;
         private TextBox textBoxSchemaName;
+        private Button buttonSaveSchema;
+        private Button buttonHelpSingle;
+        private Button buttonHelpMultiple;
     }
 }

@@ -1,4 +1,4 @@
-namespace excel_deskapp
+namespace excel2excel_template
 {
     internal static class Program
     {

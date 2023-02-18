@@ -41,3 +41,4 @@ C:\Users\user\Desktop\taner-excel\excel-deskapp\bin\Debug\net6.0-windows\excel-d
 C:\Users\user\Desktop\taner-excel\excel-deskapp\obj\Debug\net6.0-windows\excel_deskapp.FormSchemaEdit.resources
 C:\Users\user\Desktop\taner-excel\excel-deskapp\obj\Debug\net6.0-windows\excel_deskapp.FormSchemas.resources
 C:\Users\user\Desktop\taner-excel\excel-deskapp\obj\Debug\net6.0-windows\excel_deskapp.FormGenerate.resources
+C:\Users\user\Desktop\taner-excel\excel-deskapp\obj\Debug\net6.0-windows\excel_deskapp.Properties.Resources.resources

@@ -12,7 +12,7 @@ using System.Windows.Forms;
 using static System.Net.Mime.MediaTypeNames;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
-namespace excel_deskapp
+namespace excel2excel_template
 {
     public partial class FormSchemaEdit : Form
     {
@@ -171,37 +171,6 @@ namespace excel_deskapp
             renderSpecialDataTable(e.RowIndex, e.ColumnIndex, text);
         }
 
-        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if(string.IsNullOrEmpty(textBoxSchemaName.Text))
-            {
-                MessageBox.Show(Constans.MessageSchemaNameField);
-                return;
-            }
-
-            FormGenerate form1 = new FormGenerate();
-            form1.SchemaTable = this.dataGridSchema;
-            form1.SchemaInputs = this.dataGridViewInputs;
-            form1.SchemaLoopInputs = this.dataGridMultiArea;
-            form1.SchemaIsHorizontal = checkBoxIsHorizontal.Checked;
-            form1.SchemaLineStartCount = (int)txtBoxLineStartCount.Value;
-
-            string uid = Guid.NewGuid().ToString();
-            if(!string.IsNullOrEmpty(InitialSchemaFileName))
-                uid = InitialSchemaFileName;
-
-            string folder = getFilePathAndFolderCheck(uid);
-            saveFileGridView(folder, ConfigurationManager.AppSettings.Get("FileNameSchemaSpecial") ?? "single", this.dataGridViewInputs);
-            saveFileGridView(folder, ConfigurationManager.AppSettings.Get("FileNameSchemaMultiple") ?? "multiple", this.dataGridMultiArea);
-            saveFileSettingOptions(folder, ConfigurationManager.AppSettings.Get("FileNameSchemaMultipleHorizontal") ?? "_horizontal", checkBoxIsHorizontal.Checked.ToString());
-            saveFileSettingOptions(folder, ConfigurationManager.AppSettings.Get("FileNameSchemaMultipleStartCount") ?? "_startcount", txtBoxLineStartCount.Value.ToString());
-            saveFileSettingOptions(folder, ConfigurationManager.AppSettings.Get("FileNameOwner") ?? "owner", textBoxSchemaName.Text);
-            saveFileExcel(folder, ConfigurationManager.AppSettings.Get("FileNameExcel") ?? "excel", openFileName);
-            formSchemasInstance?.Refresh();
-
-            form1.Show();
-        }
-
         private string getFilePathAndFolderCheck(string uid)
         {
             string folder = @$"{ConfigurationManager.AppSettings.Get("RecordsPath") ?? @"C:\Apps\Excel2Excel\Records"}\{uid}";
@@ -214,9 +183,6 @@ namespace excel_deskapp
         {
             try
             {
-                //string deleteFolder = @$"{ConfigurationManager.AppSettings.Get("RecordsPath") ?? @"C:\Apps\Excel2Excel\Records"}\{uid}";
-                //Directory.Delete(deleteFolder, true);
-
                 var sourceFile = new FileInfo(sourceFileName);
                 var destFileStr = @$"{folder}\{destFileName}.xlsx";
                 if(sourceFileName != destFileStr)
@@ -316,10 +282,47 @@ namespace excel_deskapp
 
         private void FormSchemaEdit_Load(object sender, EventArgs e)
         {
-            if(string.IsNullOrEmpty(InitialSchemaFileName))
+            this.Text = Constans.AppName + " > Şablon Ekle";
+
+            if (string.IsNullOrEmpty(InitialSchemaFileName))
                 return;
 
+            this.Text = Constans.AppName + " > Şablon Düzenle";
             loadDataFromSave(InitialSchemaFileName);
+        }
+
+        private void buttonSaveSchema_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(textBoxSchemaName.Text))
+            {
+                MessageBox.Show(Constans.MessageSchemaNameField);
+                return;
+            }
+
+            string uid = Guid.NewGuid().ToString();
+            if (!string.IsNullOrEmpty(InitialSchemaFileName))
+                uid = InitialSchemaFileName;
+
+            string folder = getFilePathAndFolderCheck(uid);
+            saveFileGridView(folder, ConfigurationManager.AppSettings.Get("FileNameSchemaSpecial") ?? "single", this.dataGridViewInputs);
+            saveFileGridView(folder, ConfigurationManager.AppSettings.Get("FileNameSchemaMultiple") ?? "multiple", this.dataGridMultiArea);
+            saveFileSettingOptions(folder, ConfigurationManager.AppSettings.Get("FileNameSchemaMultipleHorizontal") ?? "_horizontal", checkBoxIsHorizontal.Checked.ToString());
+            saveFileSettingOptions(folder, ConfigurationManager.AppSettings.Get("FileNameSchemaMultipleStartCount") ?? "_startcount", txtBoxLineStartCount.Value.ToString());
+            saveFileSettingOptions(folder, ConfigurationManager.AppSettings.Get("FileNameOwner") ?? "owner", textBoxSchemaName.Text);
+            saveFileExcel(folder, ConfigurationManager.AppSettings.Get("FileNameExcel") ?? "excel", openFileName);
+            formSchemasInstance?.Show();
+            formSchemasInstance?.loadDataToForm();
+            this.Hide();
+        }
+
+        private void buttonHelpSingle_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Burası şablondaki özel alanları belirtmek için \nSoldaki tablonun hücrelerine çift tıklayarak buraya atama yapabilirsiniz.");
+        }
+
+        private void buttonHelpMultiple_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Burası şablonda tekrarlı olan alanları belirtmek için \nSoldaki tablonun satır numaralarına çift tıklayarak buraya atama yapabilirsiniz.");
         }
     }
 }

@@ -4,17 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace excel_deskapp
+namespace excel2excel_template
 {
     public static class Constans
     {
-        public static string HeaderTextPosition = "Position";
-        public static string HeaderTextDescription = "Description";
-        public static string HeaderTextDefaultValue = "Default Value";
-        public static string HeaderTextSourcePosition = "Source Position";
-        public static string MessageInvalid = "Invalid";
-        public static string MessageUploadFile = "Upload the excel file first";
-        public static string MessageSchemaNameField = "Please enter schema name";
-        public static string MessageSchemaChoose = "Please choose a schema";
+        public static string AppName = "e2et";
+        public static string HeaderTextPosition = "Şablon Konumu";
+        public static string HeaderTextDescription = "Açıklama";
+        public static string HeaderTextDefaultValue = "Varsayılan Değer";
+        public static string HeaderTextSourcePosition = "Kaynak Konumu";
+        public static string MessageInvalid = "Geçersiz";
+        public static string MessageUploadFile = "Önce Excel dosyası yükleyiniz";
+        public static string MessageSchemaNameField = "Lütfen şablon adı giriniz";
+        public static string MessageSchemaChoose = "Lütfen şablon seçiniz";
     }
 }

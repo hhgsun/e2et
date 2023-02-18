@@ -1,4 +1,4 @@
-﻿namespace excel_deskapp
+﻿namespace excel2excel_template
 {
     partial class FormSchemas
     {
@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormSchemas));
             this.comboBoxSchemas = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.buttonNewSchema = new System.Windows.Forms.Button();
@@ -38,10 +39,11 @@
             // 
             // comboBoxSchemas
             // 
-            this.comboBoxSchemas.FormattingEnabled = true;
+            this.comboBoxSchemas.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxSchemas.Location = new System.Drawing.Point(32, 45);
             this.comboBoxSchemas.Name = "comboBoxSchemas";
-            this.comboBoxSchemas.Size = new System.Drawing.Size(370, 23);
+            this.comboBoxSchemas.Size = new System.Drawing.Size(421, 23);
             this.comboBoxSchemas.TabIndex = 0;
             // 
             // label1
@@ -55,7 +57,7 @@
             // 
             // buttonNewSchema
             // 
-            this.buttonNewSchema.Location = new System.Drawing.Point(32, 191);
+            this.buttonNewSchema.Location = new System.Drawing.Point(32, 179);
             this.buttonNewSchema.Name = "buttonNewSchema";
             this.buttonNewSchema.Size = new System.Drawing.Size(147, 23);
             this.buttonNewSchema.TabIndex = 2;
@@ -65,7 +67,7 @@
             // 
             // buttonSchemaEdit
             // 
-            this.buttonSchemaEdit.Location = new System.Drawing.Point(32, 152);
+            this.buttonSchemaEdit.Location = new System.Drawing.Point(32, 150);
             this.buttonSchemaEdit.Name = "buttonSchemaEdit";
             this.buttonSchemaEdit.Size = new System.Drawing.Size(147, 23);
             this.buttonSchemaEdit.TabIndex = 3;
@@ -75,9 +77,10 @@
             // 
             // buttonSchemaUse
             // 
-            this.buttonSchemaUse.Location = new System.Drawing.Point(32, 74);
+            this.buttonSchemaUse.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonSchemaUse.Location = new System.Drawing.Point(332, 74);
             this.buttonSchemaUse.Name = "buttonSchemaUse";
-            this.buttonSchemaUse.Size = new System.Drawing.Size(147, 23);
+            this.buttonSchemaUse.Size = new System.Drawing.Size(121, 99);
             this.buttonSchemaUse.TabIndex = 4;
             this.buttonSchemaUse.Text = "Seçili Şablonu Kullan";
             this.buttonSchemaUse.UseVisualStyleBackColor = true;
@@ -86,7 +89,7 @@
             // checkBoxCache
             // 
             this.checkBoxCache.AutoSize = true;
-            this.checkBoxCache.Location = new System.Drawing.Point(185, 77);
+            this.checkBoxCache.Location = new System.Drawing.Point(32, 74);
             this.checkBoxCache.Name = "checkBoxCache";
             this.checkBoxCache.Size = new System.Drawing.Size(217, 19);
             this.checkBoxCache.TabIndex = 5;
@@ -97,15 +100,16 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(432, 251);
-            this.Controls.Add(this.checkBoxCache);
+            this.ClientSize = new System.Drawing.Size(483, 246);
             this.Controls.Add(this.buttonSchemaUse);
+            this.Controls.Add(this.checkBoxCache);
             this.Controls.Add(this.buttonSchemaEdit);
             this.Controls.Add(this.buttonNewSchema);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.comboBoxSchemas);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormSchemas";
-            this.Text = "FormSchemas";
+            this.Text = "Schemas";
             this.Load += new System.EventHandler(this.FormSchemas_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

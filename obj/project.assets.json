@@ -90,9 +90,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\user\\Desktop\\taner-excel\\excel-deskapp\\excel-deskapp.csproj",
-      "projectName": "excel-deskapp",
-      "projectPath": "C:\\Users\\user\\Desktop\\taner-excel\\excel-deskapp\\excel-deskapp.csproj",
+      "projectUniqueName": "C:\\Users\\user\\Desktop\\taner-excel\\excel-deskapp\\excel-to-excel-template.csproj",
+      "projectName": "excel-to-excel-template",
+      "projectPath": "C:\\Users\\user\\Desktop\\taner-excel\\excel-deskapp\\excel-to-excel-template.csproj",
       "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\user\\Desktop\\taner-excel\\excel-deskapp\\obj\\",
       "projectStyle": "PackageReference",
