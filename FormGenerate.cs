@@ -1,8 +1,13 @@
 using ExcelDataReader;
+using OfficeOpenXml;
+using OfficeOpenXml.Style;
 using System.Configuration;
 using System.Data;
+using System.Data.SqlTypes;
+using System.IO;
 using System.Text;
 using System.Windows.Forms;
+using static OfficeOpenXml.ExcelErrorValue;
 
 namespace excel2excel_template
 {
@@ -11,7 +16,6 @@ namespace excel2excel_template
         public string? InitialSchemaFileName = null;
         public bool SchemaIsHorizontal = false;
         public int SchemaLineStartCount = 0;
-        public string SchemaOwner = "";
 
         public FormGenerate()
         {
@@ -27,11 +31,19 @@ namespace excel2excel_template
                 return;
 
             loadDataFromSave(InitialSchemaFileName);
+
+            string folder = @$"{ConfigurationManager.AppSettings.Get("RecordsPath") ?? @"C:\Apps\Excel2ExcelTemplate\Records"}\{InitialSchemaFileName}";
+            string fileNameSourceSingle = ConfigurationManager.AppSettings.Get("FileNameSourceSpecial") ?? "single_sources";
+            string fileNameSourceMultiple = ConfigurationManager.AppSettings.Get("FileNameSourceMultiple") ?? "multiple_sources";
+            string fileNameSourceMultipleOptions = ConfigurationManager.AppSettings.Get("FileNameSourceMultipleOptions") ?? "multiple_sources_options";
+            getFileGridSourcePositions(dataGridViewSingle, folder, fileNameSourceSingle);
+            getFileGridSourcePositions(dataGridViewMultiple, folder, fileNameSourceMultiple);
+            getFileGridSourcePositionsOptions(folder, fileNameSourceMultipleOptions);
         }
 
         private void loadDataFromSave(string folderName)
         {
-            folderName = @$"{ConfigurationManager.AppSettings.Get("RecordsPath") ?? @"C:\Apps\Excel2Excel\Records"}\{folderName}";
+            folderName = @$"{ConfigurationManager.AppSettings.Get("RecordsPath") ?? @"C:\Apps\Excel2ExcelTemplate\Records"}\{folderName}";
 
             string fileSpecial = @$"{folderName}\{ConfigurationManager.AppSettings.Get("FileNameSchemaSpecial") ?? "single"}.txt";
             string fileMultiple = @$"{folderName}\{ConfigurationManager.AppSettings.Get("FileNameSchemaMultiple") ?? "multiple"}.txt";
@@ -40,7 +52,7 @@ namespace excel2excel_template
             string fileOwner = @$"{folderName}\{ConfigurationManager.AppSettings.Get("FileNameOwner") ?? "owner"}.txt";
             string fileExcel = @$"{folderName}\{ConfigurationManager.AppSettings.Get("FileNameExcel") ?? "excel"}.xlsx";
 
-            dataSchemaFromFile(fileExcel, dataGridSchema);
+            dataSchemaFromFile(fileExcel, dataGridPreviewSchema);
 
             string[] specials = File.ReadAllLines(fileSpecial);
             for (int i = 0; i < specials.Length; i++)
@@ -79,7 +91,7 @@ namespace excel2excel_template
             SchemaLineStartCount = Convert.ToInt32(startCount);
 
             string owner = File.ReadAllText(fileOwner);
-            SchemaOwner = owner;
+            this.Text = this.Text + " (" + owner + ")";
 
             clearGridSelectedCell(dataGridViewSingle);
             clearGridSelectedCell(dataGridViewMultiple);
@@ -237,8 +249,13 @@ namespace excel2excel_template
 
         private void buttonPreview_Click(object sender, EventArgs e)
         {
-            setPreviewDataFromSingleGrid(dataGridSourceGenerate, dataGridSchema, dataGridViewSingle);
-            setPreviewDataFromMultipleGrid(dataGridSourceGenerate, dataGridSchema, dataGridViewMultiple, 
+            initPreview();
+        }
+
+        private void initPreview()
+        {
+            setPreviewDataFromSingleGrid(dataGridSourceGenerate, dataGridPreviewSchema, dataGridViewSingle);
+            setPreviewDataFromMultipleGrid(dataGridSourceGenerate, dataGridPreviewSchema, dataGridViewMultiple,
                 SchemaLineStartCount, Convert.ToInt32(numericUpDownFinishLineCount.Value), checkBoxAddBetweenLines.Checked);
         }
 
@@ -249,7 +266,7 @@ namespace excel2excel_template
                 string? positon = optionsGrid.Rows[i].Cells[0].Value?.ToString();
                 positon = positon ?? "";
                 string[] splitPosition = positon.Split("-");
-                if (splitPosition.Length != 2)
+                if (splitPosition?.Length != 2)
                     continue;
                 int rowIndex = Convert.ToInt32(splitPosition[0]);
                 int columnIndex = Convert.ToInt32(splitPosition[1]);
@@ -258,7 +275,7 @@ namespace excel2excel_template
                 sourcePos = sourcePos ?? "";
                 string[] splitSourcePos = sourcePos.Split("-");
 
-                if (splitSourcePos.Length == 2)
+                if (splitSourcePos?.Length == 2 && sourceGrid.Rows.Count > 0)
                 {
                     int sourceRowIndex = Convert.ToInt32(splitSourcePos[0]);
                     int sourceColumnIndex = Convert.ToInt32(splitSourcePos[1]);
@@ -283,7 +300,7 @@ namespace excel2excel_template
                     string? positon = optionsGrid.Rows[i].Cells[0].Value?.ToString();
                     positon = positon ?? "";
                     string[] splitPosition = positon.Split("-");
-                    if (splitPosition.Length != 2)
+                    if (splitPosition?.Length != 2)
                         continue;
                     int rowIndex = Convert.ToInt32(splitPosition[0]);
                     int columnIndex = Convert.ToInt32(splitPosition[1]);
@@ -314,7 +331,7 @@ namespace excel2excel_template
                     if (previewGrid.Rows.Count < rowIndex + 1)
                         return;
 
-                    if (splitSourcePos.Length == 2)
+                    if (splitSourcePos?.Length == 2 && sourceGrid.Rows.Count > 0)
                     {
                         int sourceRowIndex = Convert.ToInt32(splitSourcePos[0]);
                         int sourceColumnIndex = Convert.ToInt32(splitSourcePos[1]);
@@ -336,5 +353,186 @@ namespace excel2excel_template
 
         }
 
+        private void getFileGridSourcePositions(DataGridView dataGridView, string folder, string fileName)
+        {
+            string path = @$"{folder}\{fileName}.txt";
+            if (!File.Exists(path))
+                return;
+            string[] arrStr = File.ReadAllLines(path);
+            for (int i = 0; i < arrStr.Length; i++)
+            {
+                string line = arrStr[i].Trim() ?? "";
+                dataGridView.Rows[i].Cells[3].Value = line;
+            }
+        }
+
+        private void getFileGridSourcePositionsOptions(string folder, string fileName)
+        {
+            string path = @$"{folder}\{fileName}.txt";
+            if (!File.Exists(path))
+                return;
+            string divider = ConfigurationManager.AppSettings.Get("FileGridDivider") ?? "|____|";
+            string value = File.ReadAllText(path);
+            string[] splitVal = value.Split(divider);
+            if(splitVal.Length <= 1)
+                return;
+            checkBoxAddBetweenLines.Checked = splitVal[0].Contains("True");
+            numericUpDownFinishLineCount.Value = Convert.ToInt32(splitVal[1]);
+        }
+
+        private void saveFileGridSourcePositions(DataGridView dataGridView, string folder, string fileName)
+        {
+            string path = @$"{folder}\{fileName}.txt";
+            TextWriter writer = new StreamWriter(path);
+            for (int i = 0; i < dataGridView.Rows.Count; i++)
+            {
+                writer.WriteLine(dataGridView.Rows[i].Cells[3].Value?.ToString() ?? "");
+            }
+            writer.Close();
+        }
+
+        private void saveFileGridSourcePositionsOptions(string folder, string fileName)
+        {
+            string value = "";
+            value += checkBoxAddBetweenLines.Checked ? "True" : "False";
+            value += ConfigurationManager.AppSettings.Get("FileGridDivider") ?? "|____|";
+            value += numericUpDownFinishLineCount.Value.ToString();
+            string path = @$"{folder}\{fileName}.txt";
+            TextWriter writer = new StreamWriter(path);
+            writer.Write(value);
+            writer.Close();
+        }
+
+        private void setExcelFromSingleData(ExcelWorksheet excelWorksheet)
+        {
+            for (int i = 0; i < dataGridViewSingle.Rows.Count; i++)
+            {
+                string? positon = dataGridViewSingle.Rows[i].Cells[0].Value?.ToString();
+                positon = positon ?? "";
+                string[] splitPosition = positon.Split("-");
+                if (splitPosition.Length != 2)
+                    continue;
+                int rowIndex = Convert.ToInt32(splitPosition[0]);
+                int columnIndex = Convert.ToInt32(splitPosition[1]);
+
+                object val = dataGridPreviewSchema[columnIndex, rowIndex].Value;
+                if (val == null || string.IsNullOrEmpty(val.ToString()))
+                    val = dataGridViewSingle.Rows[i].Cells[2].Value;
+                excelWorksheet.Cells[rowIndex + 1, columnIndex + 1].Value = val;
+            }
+        }
+
+        private void setExcelFromMultipleData(ExcelWorksheet excelWorksheet)
+        {
+            int addedCount = SchemaLineStartCount;
+            int finishCount = Convert.ToInt32(numericUpDownFinishLineCount.Value);
+            bool isAddBetween = checkBoxAddBetweenLines.Checked;
+
+            if (finishCount < 0)
+                return;
+
+            for (int c = addedCount; c <= finishCount; c++)
+            {
+                for (int i = 0; i < dataGridViewMultiple.Rows.Count; i++)
+                {
+                    string? positon = dataGridViewMultiple.Rows[i].Cells[0].Value?.ToString();
+                    positon = positon ?? "";
+                    string[] splitPosition = positon.Split("-");
+                    if (splitPosition?.Length != 2)
+                        continue;
+                    int rowIndex = Convert.ToInt32(splitPosition[0]);
+                    int columnIndex = Convert.ToInt32(splitPosition[1]);
+
+                    if (SchemaIsHorizontal)
+                        columnIndex += c;
+                    else
+                        rowIndex += c;
+
+                    if (dataGridPreviewSchema.Rows.Count < rowIndex + 1)
+                        return;
+
+                    if (isAddBetween && i == 0)
+                        excelWorksheet.InsertRow(rowIndex + 1, 1, rowIndex + 1);
+
+                    object val = dataGridPreviewSchema[columnIndex, rowIndex].Value;
+                    if (val == null || string.IsNullOrEmpty(val.ToString()))
+                        val = dataGridViewMultiple.Rows[i].Cells[2].Value;
+                    excelWorksheet.Cells[rowIndex + 1, columnIndex + 1].Value = val;
+                }
+            }
+        }
+
+        private void exportFile()
+        {
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+            string folderName = @$"{ConfigurationManager.AppSettings.Get("RecordsPath") ?? @"C:\Apps\Excel2ExcelTemplate\Records"}\{InitialSchemaFileName}";
+            string fileExcel = @$"{folderName}\{ConfigurationManager.AppSettings.Get("FileNameExcel") ?? "excel"}.xlsx";
+
+            using (SaveFileDialog dialog = new SaveFileDialog() { Filter = "Excel Workbook|*.xlsx", FilterIndex = 2, RestoreDirectory = true })
+            {
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    MemoryStream ms = new MemoryStream();
+                    using (FileStream fs = File.OpenRead(fileExcel))
+                    using (ExcelPackage excelPackage = new ExcelPackage(fs))
+                    {
+                        ExcelWorkbook excelWorkBook = excelPackage.Workbook;
+                        ExcelWorksheet excelWorksheet = excelWorkBook.Worksheets.First();
+                        setExcelFromSingleData(excelWorksheet);
+                        setExcelFromMultipleData(excelWorksheet);
+                        //excelPackage.SaveAs(ms); // This is the important part.
+                        excelPackage.SaveAs(dialog.FileName);
+                    }
+                    ms.Position = 0;
+                }
+            }
+
+        }
+
+        private void buttonClearGridSingle_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewSingle.Rows.Count <= 0)
+                return;
+            for (int i = 0; i < dataGridViewSingle.Rows.Count; i++)
+            {
+                dataGridViewSingle.Rows[i].Cells[dataGridViewSingle.Rows[i].Cells.Count - 1].Value = "";
+                dataGridViewSingle.Rows[i].Cells[dataGridViewSingle.Rows[i].Cells.Count - 1].Style.BackColor = Color.White;
+            }
+        }
+
+        private void buttonClearGridMultiple_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewMultiple.Rows.Count <= 0)
+                return;
+            for (int i = 0; i < dataGridViewMultiple.Rows.Count; i++)
+            {
+                dataGridViewMultiple.Rows[i].Cells[dataGridViewMultiple.Rows[i].Cells.Count - 1].Value = "";
+                dataGridViewMultiple.Rows[i].Cells[dataGridViewMultiple.Rows[i].Cells.Count - 1].Style.BackColor = Color.White;
+            }
+        }
+
+        private void buttonClearSchema_Click(object sender, EventArgs e)
+        {
+            dataGridPreviewSchema.DataSource = null;
+            string folderName = @$"{ConfigurationManager.AppSettings.Get("RecordsPath") ?? @"C:\Apps\Excel2ExcelTemplate\Records"}\{InitialSchemaFileName}";
+            string fileExcel = @$"{folderName}\{ConfigurationManager.AppSettings.Get("FileNameExcel") ?? "excel"}.xlsx";
+            dataSchemaFromFile(fileExcel, dataGridPreviewSchema);
+        }
+
+        private void buttonExportFile_Click(object sender, EventArgs e)
+        {
+            string folder = @$"{ConfigurationManager.AppSettings.Get("RecordsPath") ?? @"C:\Apps\Excel2ExcelTemplate\Records"}\{InitialSchemaFileName}";
+            string fileNameSourceSingle = ConfigurationManager.AppSettings.Get("FileNameSourceSpecial") ?? "single_sources";
+            string fileNameSourceMultiple = ConfigurationManager.AppSettings.Get("FileNameSourceMultiple") ?? "multiple_sources";
+            string fileNameSourceMultipleOptions = ConfigurationManager.AppSettings.Get("FileNameSourceMultipleOptions") ?? "multiple_sources_options";
+            if (checkBoxSaveSingleSources.Checked)
+                saveFileGridSourcePositions(dataGridViewSingle, folder, fileNameSourceSingle);
+            if (checkBoxSaveMultipleSources.Checked)
+            {
+                saveFileGridSourcePositions(dataGridViewMultiple, folder, fileNameSourceMultiple);
+                saveFileGridSourcePositionsOptions(folder, fileNameSourceMultipleOptions);
+            }
+            exportFile();
+        }
     }
 }

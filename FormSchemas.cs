@@ -79,6 +79,7 @@ namespace excel2excel_template
 
         private void FormSchemas_Load(object sender, EventArgs e)
         {
+            label2.Text = "© 2023 " + Constans.AppName + " | " + label2.Text;
             loadDataToForm();
         }
 

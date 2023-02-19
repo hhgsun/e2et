@@ -173,7 +173,7 @@ namespace excel2excel_template
 
         private string getFilePathAndFolderCheck(string uid)
         {
-            string folder = @$"{ConfigurationManager.AppSettings.Get("RecordsPath") ?? @"C:\Apps\Excel2Excel\Records"}\{uid}";
+            string folder = @$"{ConfigurationManager.AppSettings.Get("RecordsPath") ?? @"C:\Apps\Excel2ExcelTemplate\Records"}\{uid}";
             if (!Directory.Exists(folder))
                 Directory.CreateDirectory(folder);
             return folder;
@@ -229,7 +229,7 @@ namespace excel2excel_template
 
         private void loadDataFromSave(string folderName)
         {
-            folderName = @$"{ConfigurationManager.AppSettings.Get("RecordsPath") ?? @"C:\Apps\Excel2Excel\Records"}\{folderName}";
+            folderName = @$"{ConfigurationManager.AppSettings.Get("RecordsPath") ?? @"C:\Apps\Excel2ExcelTemplate\Records"}\{folderName}";
 
             string fileSpecial = @$"{folderName}\{ConfigurationManager.AppSettings.Get("FileNameSchemaSpecial") ?? "single"}.txt";
             string fileMultiple = @$"{folderName}\{ConfigurationManager.AppSettings.Get("FileNameSchemaMultiple") ?? "multiple"}.txt";

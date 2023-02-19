@@ -35,6 +35,7 @@
             this.buttonSchemaEdit = new System.Windows.Forms.Button();
             this.buttonSchemaUse = new System.Windows.Forms.Button();
             this.checkBoxCache = new System.Windows.Forms.CheckBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // comboBoxSchemas
@@ -96,6 +97,19 @@
             this.checkBoxCache.Text = "Sonraki açılışlarda bu şablonu kullan";
             this.checkBoxCache.UseVisualStyleBackColor = true;
             // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.AutoSize = true;
+            this.label2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label2.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.label2.Location = new System.Drawing.Point(30, 222);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(131, 15);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "Developed by HHGSUN";
+            // 
             // FormSchemas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -107,6 +121,7 @@
             this.Controls.Add(this.buttonNewSchema);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.comboBoxSchemas);
+            this.Controls.Add(this.label2);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormSchemas";
             this.Text = "Schemas";
@@ -124,5 +139,6 @@
         private Button buttonSchemaEdit;
         private Button buttonSchemaUse;
         private CheckBox checkBoxCache;
+        private Label label2;
     }
 }

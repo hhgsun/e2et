@@ -8,7 +8,7 @@ namespace excel2excel_template
 {
     public static class Constans
     {
-        public static string AppName = "e2et";
+        public static string AppName = "E2ET";
         public static string HeaderTextPosition = "Şablon Konumu";
         public static string HeaderTextDescription = "Açıklama";
         public static string HeaderTextDefaultValue = "Varsayılan Değer";
