@@ -13,6 +13,8 @@ namespace excel2excel_template
 {
     public partial class FormGenerate : Form
     {
+        public FormSchemas? formSchemasInstance = null;
+
         public string? InitialSchemaFileName = null;
         public bool SchemaIsHorizontal = false;
         public int SchemaLineStartCount = 0;
@@ -25,7 +27,7 @@ namespace excel2excel_template
 
         private void FormGenerate_Load(object sender, EventArgs e)
         {
-            this.Text = Constans.AppName + " > Tablodan Þablona Aktar";
+            this.Text = Constans.AppName + " › Tablodan Þablona Aktar";
 
             if (string.IsNullOrEmpty(InitialSchemaFileName))
                 return;
@@ -533,6 +535,13 @@ namespace excel2excel_template
                 saveFileGridSourcePositionsOptions(folder, fileNameSourceMultipleOptions);
             }
             exportFile();
+        }
+
+        private void sablonlaraDonToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if(this.formSchemasInstance != null)
+                this.formSchemasInstance.isBackForm = true;
+            this.Close();
         }
     }
 }

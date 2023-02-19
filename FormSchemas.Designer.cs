@@ -58,7 +58,7 @@
             // 
             // buttonNewSchema
             // 
-            this.buttonNewSchema.Location = new System.Drawing.Point(32, 179);
+            this.buttonNewSchema.Location = new System.Drawing.Point(32, 150);
             this.buttonNewSchema.Name = "buttonNewSchema";
             this.buttonNewSchema.Size = new System.Drawing.Size(147, 23);
             this.buttonNewSchema.TabIndex = 2;
@@ -68,7 +68,7 @@
             // 
             // buttonSchemaEdit
             // 
-            this.buttonSchemaEdit.Location = new System.Drawing.Point(32, 150);
+            this.buttonSchemaEdit.Location = new System.Drawing.Point(32, 121);
             this.buttonSchemaEdit.Name = "buttonSchemaEdit";
             this.buttonSchemaEdit.Size = new System.Drawing.Size(147, 23);
             this.buttonSchemaEdit.TabIndex = 3;

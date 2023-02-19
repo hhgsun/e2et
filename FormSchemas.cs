@@ -15,6 +15,7 @@ namespace excel2excel_template
 {
     public partial class FormSchemas : Form
     {
+        public bool isBackForm = false;
         public FormSchemas()
         {
             InitializeComponent();
@@ -46,15 +47,24 @@ namespace excel2excel_template
 
         private void showFormEdit(FormSchemaEdit formEdit)
         {
+            this.isBackForm = false;
             this.Hide();
-
             formEdit.formSchemasInstance = this;
-            formEdit.FormClosed += (s, args) => this.Close();
+            formEdit.FormClosed += (s, args) => handleBackForm(s, args);
             formEdit.Show();
+        }
+
+        private void handleBackForm(object? s, FormClosedEventArgs args)
+        {
+            if (this.isBackForm)
+                this.Show();
+            else
+                this.Close();
         }
 
         private void buttonSchemaUse_Click(object sender, EventArgs e)
         {
+            this.isBackForm = false;
             if (comboBoxSchemas.SelectedIndex == -1)
             {
                 MessageBox.Show(Constans.MessageSchemaChoose);
@@ -72,8 +82,11 @@ namespace excel2excel_template
                 deleteCacheSchemaName();
             }
 
+            this.Hide();
             FormGenerate formGenerate = new FormGenerate();
+            formGenerate.formSchemasInstance = this;
             formGenerate.InitialSchemaFileName = selectedValue;
+            formGenerate.FormClosed += (s, args) => handleBackForm(s, args);
             formGenerate.Show();
         }
 
@@ -85,21 +98,29 @@ namespace excel2excel_template
 
         public void loadDataToForm()
         {
-            this.Text = Constans.AppName + " > Şablonlar";
+            this.Text = Constans.AppName + " › Şablonlar";
             comboBoxSchemas.Items.Clear();
 
             string folder = @$"{ConfigurationManager.AppSettings.Get("RecordsPath") ?? @"C:\Apps\Excel2Excel\Records"}";
             if (!Directory.Exists(folder))
                 Directory.CreateDirectory(folder);
 
+            buttonSchemaUse.Enabled = false;
+            buttonSchemaEdit.Enabled = false;
+
             var folders = Directory.GetDirectories(folder);
 
-            foreach (var f in folders)
+            if(folders.Length > 0)
             {
-                var name = Path.GetFileName(f);
-                string textFile = @$"{folder}\{name}\{ConfigurationManager.AppSettings.Get("FileNameOwner") ?? "owner"}.txt";
-                string text = File.ReadAllText(textFile);
-                comboBoxSchemas.Items.Add(new ComboboxItem() { Text = text, Value = name });
+                buttonSchemaUse.Enabled = true;
+                buttonSchemaEdit.Enabled = true;
+                foreach (var f in folders)
+                {
+                    var name = Path.GetFileName(f);
+                    string textFile = @$"{folder}\{name}\{ConfigurationManager.AppSettings.Get("FileNameOwner") ?? "owner"}.txt";
+                    string text = File.ReadAllText(textFile);
+                    comboBoxSchemas.Items.Add(new ComboboxItem() { Text = text, Value = name });
+                }
             }
 
             string cacheFileName = @$"{folder}\{ConfigurationManager.AppSettings.Get("FileNameCacheSelectedSchema") ?? "_cache"}.txt";

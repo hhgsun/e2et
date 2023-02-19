@@ -31,6 +31,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormSchemaEdit));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.sablonlaraDonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sablonSecToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridSchema = new System.Windows.Forms.DataGridView();
             this.dataGridViewInputs = new System.Windows.Forms.DataGridView();
@@ -70,6 +71,7 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.sablonlaraDonToolStripMenuItem,
             this.sablonSecToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -77,11 +79,18 @@
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
+            // sablonlaraDonToolStripMenuItem
+            // 
+            this.sablonlaraDonToolStripMenuItem.Name = "sablonlaraDonToolStripMenuItem";
+            this.sablonlaraDonToolStripMenuItem.Size = new System.Drawing.Size(96, 20);
+            this.sablonlaraDonToolStripMenuItem.Text = "↩️ 💼 Şablonlar";
+            this.sablonlaraDonToolStripMenuItem.Click += new System.EventHandler(this.sablonlaraDonToolStripMenuItem_Click);
+            // 
             // sablonSecToolStripMenuItem
             // 
             this.sablonSecToolStripMenuItem.Name = "sablonSecToolStripMenuItem";
-            this.sablonSecToolStripMenuItem.Size = new System.Drawing.Size(119, 20);
-            this.sablonSecToolStripMenuItem.Text = "Şablon Dosyası Seç";
+            this.sablonSecToolStripMenuItem.Size = new System.Drawing.Size(134, 20);
+            this.sablonSecToolStripMenuItem.Text = "📂 Şablon Dosyası Seç";
             this.sablonSecToolStripMenuItem.Click += new System.EventHandler(this.sablonSecToolStripMenuItem_Click);
             // 
             // dataGridSchema
@@ -364,5 +373,6 @@
         private Button buttonSaveSchema;
         private Button buttonHelpSingle;
         private Button buttonHelpMultiple;
+        private ToolStripMenuItem sablonlaraDonToolStripMenuItem;
     }
 }

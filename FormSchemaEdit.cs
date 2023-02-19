@@ -282,12 +282,12 @@ namespace excel2excel_template
 
         private void FormSchemaEdit_Load(object sender, EventArgs e)
         {
-            this.Text = Constans.AppName + " > Şablon Ekle";
+            this.Text = Constans.AppName + " › Şablon Ekle";
 
             if (string.IsNullOrEmpty(InitialSchemaFileName))
                 return;
 
-            this.Text = Constans.AppName + " > Şablon Düzenle";
+            this.Text = Constans.AppName + " › Şablon Düzenle";
             loadDataFromSave(InitialSchemaFileName);
         }
 
@@ -323,6 +323,13 @@ namespace excel2excel_template
         private void buttonHelpMultiple_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Burası şablonda tekrarlı olan alanları belirtmek için \nSoldaki tablonun satır numaralarına çift tıklayarak buraya atama yapabilirsiniz.");
+        }
+
+        private void sablonlaraDonToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (this.formSchemasInstance != null)
+                this.formSchemasInstance.isBackForm = true;
+            this.Close();
         }
     }
 }

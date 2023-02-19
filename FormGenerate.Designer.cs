@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormGenerate));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.sablonlaraDonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridSourceGenerate = new System.Windows.Forms.DataGridView();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
@@ -73,6 +74,7 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.sablonlaraDonToolStripMenuItem,
             this.toolStripMenuItem1});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -80,11 +82,18 @@
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
+            // sablonlaraDonToolStripMenuItem
+            // 
+            this.sablonlaraDonToolStripMenuItem.Name = "sablonlaraDonToolStripMenuItem";
+            this.sablonlaraDonToolStripMenuItem.Size = new System.Drawing.Size(96, 20);
+            this.sablonlaraDonToolStripMenuItem.Text = "↩️ 💼 Şablonlar";
+            this.sablonlaraDonToolStripMenuItem.Click += new System.EventHandler(this.sablonlaraDonToolStripMenuItem_Click);
+            // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(113, 20);
-            this.toolStripMenuItem1.Text = "Kaynak Dosya Seç";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(136, 20);
+            this.toolStripMenuItem1.Text = "📂 Kaynak Dosyası Seç";
             this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
             // dataGridSourceGenerate
@@ -406,5 +415,6 @@
         private CheckBox checkBoxSaveMultipleSources;
         private Button buttonExportFile;
         private Button buttonClearSchema;
+        private ToolStripMenuItem sablonlaraDonToolStripMenuItem;
     }
 }
